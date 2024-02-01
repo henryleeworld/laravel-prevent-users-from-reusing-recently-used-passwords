@@ -3,10 +3,9 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Infinitypaul\LaravelPasswordHistoryValidation\Rules\NotFromPasswordHistory;
 use Laravel\Fortify\Contracts\ResetsUserPasswords;
-use LucaTerribili\LaravelPasswordHistoryValidation\Rules\NotFromPasswordHistory;
 
 class ResetUserPassword implements ResetsUserPasswords
 {
@@ -20,15 +19,11 @@ class ResetUserPassword implements ResetsUserPasswords
     public function reset(User $user, array $input): void
     {
         Validator::make($input, [
-            // 'password' => $this->passwordRules(),
-            'password' => [
-                'required',
-                new NotFromPasswordHistory($user)
-            ],
+            'password' => [$this->passwordRules(), new NotFromPasswordHistory($user)],
         ])->validate();
 
         $user->forceFill([
-            'password' => Hash::make($input['password']),
+            'password' => $input['password'],
         ])->save();
     }
 }
