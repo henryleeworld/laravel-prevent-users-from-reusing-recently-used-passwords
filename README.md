@@ -1,4 +1,4 @@
-# Laravel 10 避免重複使用舊的密碼
+# Laravel 11 避免重複使用舊的密碼
 
 引入 thanhlyvan 的 laravel-password-history-validation 套件來擴增避免重複使用舊的密碼，較長的時間相同的密碼是適用於特定帳戶，較大的機會，攻擊者將能夠判斷透過暴力密碼破解攻擊的密碼。如果使用者需要變更其密碼，但他們可以重複使用舊的密碼，便可大幅縮短良好的密碼原則的有效性。
 
@@ -36,5 +36,5 @@ $ npm run build
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/fMnKL8I.png)
+![](https://i.imgur.com/6S0fuuT.png)
 > 利用密碼歷程記錄避免重複使用舊的密碼
